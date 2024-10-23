@@ -1,9 +1,9 @@
-import { base_url, password, username } from "./config.js";
+import { base_url, password, username, authToken } from "./config.js";
 import http from "k6/http";
 import { check } from 'k6';
 import { sleep } from "k6";
 
-let accessToken = "";
+let accessToken = `${authToken}`;
 
 export const options = {
   // K6 bills in VUh 
@@ -93,7 +93,6 @@ if (res.status === 200) {
     JSON.stringify({query: mutation}),
     {headers: headers}
   );
-  
   // Adding check for 200 response code
   check(res, {
     'is status 200': (r) => r.status === 200,
@@ -102,5 +101,4 @@ if (res.status === 200) {
 }
 // Added sleep for 0.3 seconds if required
 // sleep(0.3);
-
 }
