@@ -13,6 +13,6 @@
 
 - To execute the script using K6 Cloud first authenticate with K6 Cloud by running `k6 login cloud --token token_ID` then to execute the script by running `k6 cloud run WPGraphQL.js`.
 
-- To define the hostname, username, password or authtoken at run time add the the following flags:
+- To define the hostname, username, password or authtoken at run time add the following flags:
     - Local Execution: `k6 run -e HOSTNAME=domain.com USERNAME=Your_Username PASSWORD=Your_Password AUTHTOKEN=Your_Token WPGraphQL.js`
     - Cloud Execution: `k6 cloud run -e HOSTNAME=domain.com USERNAME=Your_Username PASSWORD=Your_Password AUTHTOKEN=Your_Token WPGraphQL.js`.
