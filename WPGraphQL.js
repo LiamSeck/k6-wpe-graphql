@@ -1,6 +1,7 @@
 import { base_url, password, username, authToken } from "./config.js";
 import http from "k6/http";
 import { check } from 'k6';
+import { tagWithCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
 import { sleep } from "k6";
 
 let accessToken = `${authToken}`;
@@ -28,18 +29,34 @@ export const options = {
 
     scenarios: {
       PostRequestToWPGraphQL: {
-        executor: 'constant-vus',
+        // Number of Virtual Users ramping up over time; starting at 0 growing to a max of 70
+        executor: 'ramping-vus',
+        startVUs: 0,
+        stages: [
+          { duration: '30s', target: 20 },
+          { duration: '1m', target: 20 },
+          { duration: '30s', target: 30 },
+          { duration: '1m', target: 30 },
+          { duration: '30s', target: 40 },
+          { duration: '1m', target: 40 },
+          { duration: '30s', target: 50 },
+          { duration: '1m', target: 50 },
+          { duration: '30s', target: 60 },
+          { duration: '1m', target: 60 },
+          { duration: '30s', target: 70 },
+          { duration: '1m', target: 70 },
+        ],
         gracefulStop: '30s',
-        // Duration 
-        duration: '1m',
-        // Number of Virtual Users
-        vus: 1,
         exec: 'WPGraphQL',
         },  
       },
 };
 
 export function WPGraphQL() {
+
+tagWithCurrentStageIndex();
+
+
 // List Post Titles Query
 let query = `query ListPostTitles {
     posts(where: {}) {
