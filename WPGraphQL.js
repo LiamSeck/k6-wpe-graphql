@@ -24,7 +24,7 @@ export const options = {
     // Adding thresholds for error rates and request duration  
     thresholds: {
       http_req_failed: ['rate<0.01'], // http errors should be less than 1%
-      http_req_duration: ['p(95)<400'], // 95% of requests should be below 500ms
+      http_req_duration: ['p(95)<400'], // 95% of requests should be below 400ms
     },
 
     scenarios: {
@@ -55,7 +55,6 @@ export const options = {
 export function WPGraphQL() {
 
 tagWithCurrentStageIndex();
-
 
 // List Post Titles Query
 let query = `query ListPostTitles {
@@ -104,6 +103,7 @@ if (res.status === 200) {
     clientMutationId
   }
 }`;
+
   // Make POST request with mutation query 
   res = http.post(`https://${base_url}/graphql`,
     JSON.stringify({query: mutation}),
