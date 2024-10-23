@@ -12,7 +12,7 @@ export const options = {
   // E.g (10 VUs x 5 mins)/60 = 0.83 VUh
   
   cloud: {
-    // Project: WpGraphQL Load Testing
+    // Project: WPGraphQL Load Testing
     projectID: 3720540,
     // Test runs with the same name groups test runs together.
     name: 'Load Testing of WPGraphQL',
