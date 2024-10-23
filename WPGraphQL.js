@@ -56,7 +56,7 @@ let headers = {
   // 'Authorization': `Bearer ${accessToken}`,
   "Content-Type": "application/json"
 };
-// Make POST request listing p
+// Make POST request listing post titles
 let res = http.post(`https://${base_url}/graphql`,
   JSON.stringify({ query: query }),
   {headers: headers}
