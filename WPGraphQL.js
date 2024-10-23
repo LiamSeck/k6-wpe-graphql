@@ -40,7 +40,7 @@ export const options = {
 };
 
 export function WPGraphQL() {
-// List Post Tittles Query
+// List Post Titles Query
 let query = `query ListPostTitles {
     posts(where: {}) {
       edges {
@@ -56,7 +56,7 @@ let headers = {
   // 'Authorization': `Bearer ${accessToken}`,
   "Content-Type": "application/json"
 };
-
+// Make POST request listing 
 let res = http.post(`https://${base_url}/graphql`,
   JSON.stringify({ query: query }),
   {headers: headers}
@@ -87,8 +87,7 @@ if (res.status === 200) {
     clientMutationId
   }
 }`;
-
-
+  // Make POST request with mutation query 
   res = http.post(`https://${base_url}/graphql`,
     JSON.stringify({query: mutation}),
     {headers: headers}
@@ -97,7 +96,6 @@ if (res.status === 200) {
   check(res, {
     'is status 200': (r) => r.status === 200,
   });
-
 }
 // Added sleep for 0.3 seconds if required
 // sleep(0.3);
