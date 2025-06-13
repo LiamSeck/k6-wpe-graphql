@@ -4,7 +4,7 @@
 
 - This script is based on [the Grafana example](https://github.com/grafana/k6/blob/master/examples/graphql.js)
 
-- This K6 script targets a WordPress install on WPE with [WPGraphQL](https://github.com/wp-graphql/wp-graphql) intalled: https://liamsegraphql.wpenginepowered.com/ 
+- This K6 script targets a WordPress install on WPE with [WPGraphQL](https://github.com/wp-graphql/wp-graphql) installed: https://liamsegraphql.wpenginepowered.com/ 
 
 ---
 
